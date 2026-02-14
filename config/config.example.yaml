@@ -1,0 +1,94 @@
+# ECM MCP Server Configuration
+# Copy this file to config.yaml and update with your ECM details
+
+ecm:
+  # Base URL of your ECM REST API
+  base_url: "https://your-ecm-instance.com/api/v1"
+  
+  # Authentication type: oauth2, api_key, or basic
+  auth_type: "oauth2"
+  
+  # OAuth 2.0 Configuration
+  oauth:
+    client_id: "your_client_id_here"
+    client_secret: "your_client_secret_here"
+    token_url: "https://your-ecm-instance.com/oauth/token"
+    scopes:
+      - "read"
+      - "write"
+    # Optional: refresh token for token renewal
+    refresh_token: ""
+  
+  # API Key Configuration (alternative to OAuth)
+  api_key:
+    header_name: "X-API-Key"
+    key: "your_api_key_here"
+  
+  # Basic Auth Configuration (least recommended)
+  basic:
+    username: "your_username"
+    password: "your_password"
+  
+  # HTTP Request Settings
+  timeout: 30  # seconds
+  retry_attempts: 3
+  retry_backoff: 2  # exponential backoff multiplier
+  rate_limit: 100  # requests per minute
+  
+  # Custom headers (optional)
+  headers:
+    User-Agent: "ECM-MCP-Server/1.0"
+    Accept: "application/json"
+
+# Server Configuration
+server:
+  name: "ecm-mcp-server"
+  version: "1.0.0"
+  log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  
+# Feature Flags
+features:
+  enable_caching: true
+  cache_ttl: 300  # seconds
+  cache_max_size: 1000  # max items in cache
+  enable_audit_log: true
+  audit_log_path: "logs/audit.log"
+  enable_metrics: false
+  
+# Tool-specific configurations
+tools:
+  search:
+    max_results: 100
+    default_page_size: 20
+  
+  documents:
+    max_upload_size: 104857600  # 100MB in bytes
+    allowed_mime_types:
+      - "application/pdf"
+      - "application/msword"
+      - "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+      - "text/plain"
+      - "image/jpeg"
+      - "image/png"
+  
+  folders:
+    max_depth: 10  # max folder hierarchy depth
+
+# ECM System Specific Settings
+# Uncomment and configure for your specific ECM system
+
+# SharePoint Configuration
+# sharepoint:
+#   site_id: "your-site-id"
+#   drive_id: "your-drive-id"
+#   tenant_id: "your-tenant-id"
+
+# Alfresco Configuration  
+# alfresco:
+#   repository_id: "your-repo-id"
+#   api_version: "1"
+
+# Documentum Configuration
+# documentum:
+#   repository: "your-repository-name"
+#   api_version: "v2"
