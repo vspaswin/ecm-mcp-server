@@ -1,0 +1,34 @@
+# Core MCP dependencies
+mcp>=1.1.2
+fastmcp>=0.5.0
+
+# HTTP client
+httpx>=0.27.0
+
+# Configuration
+pyyaml>=6.0.1
+python-dotenv>=1.0.0
+
+# Authentication
+authlib>=1.3.0
+pyjwt>=2.8.0
+
+# Caching
+cachetools>=5.3.0
+
+# Utilities
+pydantic>=2.7.0
+pydantic-settings>=2.2.0
+
+# Logging
+structlog>=24.1.0
+
+# Development
+pytest>=8.1.0
+pytest-asyncio>=0.23.0
+pytest-cov>=5.0.0
+ruff>=0.4.0
+black>=24.4.0
+mypy>=1.10.0
+types-pyyaml>=6.0.12
+types-cachetools>=5.3.0
